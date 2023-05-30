@@ -16,41 +16,52 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      {loading ? <Spinner /> :
-        <Routes>
-          <Route path="/" element={
-            <ProtectedRoute>
-              <Layout>
-                <HomePage />
-              </Layout>
-            </ProtectedRoute>
-          } />
-          <Route path="/apply-doctor" element={
-            <ProtectedRoute>
-              <Layout>
-                <ApplyDoctor />
-              </Layout>
-            </ProtectedRoute>
-          } />
-          <Route path="/notification" element={
-            <ProtectedRoute>
-              <Layout>
-                <Notification />
-              </Layout>
-            </ProtectedRoute>
-          } />
-          <Route path="/login" element={
-            <PublicRoute>
-              <Login />
-            </PublicRoute>
-          } />
-          <Route path="/register" element={
-            <PublicRoute>
-              <Register />
-            </PublicRoute>
-            } />
-        </Routes>
-      }
+        {loading ? (
+          <Spinner />
+        ) : (
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <HomePage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/apply-doctor"
+              element={
+                <ProtectedRoute>
+                  <ApplyDoctor />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/notification"
+              element={
+                <ProtectedRoute>
+                  <Notification />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <PublicRoute>
+                  <Register />
+                </PublicRoute>
+              }
+            />
+          </Routes>
+        )}
       </BrowserRouter>
     </>
   );

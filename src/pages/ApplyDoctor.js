@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {showLoading,hideLoading} from "../redux/features/alertslice"
 import axios from "axios";
+import Layout from "../components/Layout";
 
 const ApplyDoctor = () => {
 
@@ -36,7 +37,7 @@ const ApplyDoctor = () => {
   };
 
   return (
-    <>
+    <Layout>
       <h1 className="text-center">Apply Doctor</h1>
       <Form className="m-4" layout="horizontal" onFinish={handleFinish}>
         <h4 className="mb-4">Personal Details : </h4>
@@ -154,7 +155,7 @@ const ApplyDoctor = () => {
             </button>
         </div>
       </Form>
-    </>
+    </Layout>
   );
 };
 

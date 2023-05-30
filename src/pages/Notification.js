@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { showLoading, hideLoading } from  "../redux/features/alertslice";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import Layout from "../components/Layout";
+
 
 const Notification = () => {
   const { user } = useSelector((state) => state.user);
@@ -53,7 +55,7 @@ const Notification = () => {
   };
 
   return (
-    <>
+    <Layout>
       <h2 className="m-3 text-center">Notification</h2>
       <Tabs className="mx-4">
         <Tabs.TabPane tab="UnRead" key={0}>
@@ -81,7 +83,7 @@ const Notification = () => {
           </div>
         </Tabs.TabPane>
       </Tabs>
-    </>
+    </Layout>
   );
 };
 
