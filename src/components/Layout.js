@@ -1,36 +1,27 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { adminMenu, userMenu } from "./../Data/Data";
+
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Badge, message } from "antd";
+import { logout } from "../redux/features/userSlice";
+import { useDispatch } from "react-redux";
 
 const Layout = ({ children }) => {
-
+  const { user } = useSelector((state) => state.user);
   const location = useLocation();
-  const SidebarMenu = [
-    {
-      name: "Home",
-      path: "/",
-      icon: "fa-solid fa-house",
-    },
-    {
-      name: "Appointments",
-      path: "/appointments",
-      icon: "fa-solid fa-list",
-    },
-    {
-      name: "Apply Doctor",
-      path: "/apply-doctor",
-      icon: "fa-solid fa-user-doctor",
-    },
-    {
-      name: "Profile",
-      path: "/profile",
-      icon: "fa-solid fa-user",
-    },
-    {
-      name: "Logout",
-      path: "/logout",
-      icon: "fa-solid fa-right-from-bracket",
-    },
-  ];
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  // logout funtion
+  const handleLogout = () => {
+    dispatch(logout());
+    message.success("Logout Successfully");
+    navigate("/login");
+  };
+
+  // redering menu list
+  const SidebarMenu = user?.isAdmin ? adminMenu : userMenu;
   return (
     <>
       <div className="main">
@@ -52,10 +43,21 @@ const Layout = ({ children }) => {
                   </>
                 );
               })}
+              <div className={`menu-item `} onClick={handleLogout}>
+                <i className="fa-solid fa-right-from-bracket"></i>
+                <Link to="/login">Logout</Link>
+              </div>
             </div>
           </div>
           <div className="content">
-            <div className="header">Header</div>
+            <div className="header">
+              <div className="header-content" >
+                <Badge count={user && user.notification.length}  onClick={()=>{navigate('/notification')}}>
+                  <i className="fa-solid fa-bell" style={{cursor:'pointer'}}></i>
+                </Badge>
+                <Link to="/profile">{user?.name}</Link>
+              </div>
+            </div>
             <div className="body">{children}</div>
           </div>
         </div>
