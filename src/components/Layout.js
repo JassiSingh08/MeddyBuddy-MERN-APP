@@ -106,7 +106,7 @@ const Layout = ({ children }) => {
                 <Link to={`/user/profile/${user?._id}`}>{user?.name}</Link>
               </div>
             </div>
-            <div className="body">{children}</div>
+            <div className="body layout-container">{children}</div>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+/* import React, { useEffect, useState } from "react";
 import Layout from "./../../components/Layout";
 import axios from "axios";
 import { Table, message } from "antd";
@@ -117,6 +117,185 @@ const Users = () => {
     <Layout>
       <h1 className="text-center m-2">Users List</h1>
       <Table columns={columns} dataSource={users} />
+    </Layout>
+  );
+};
+ */
+
+import React, { useState, useEffect } from "react";
+import { Table, Input,message } from "antd";
+import Layout from "./../../components/Layout";
+import axios from "axios";
+import { useSelector } from "react-redux";
+
+const Users = () => {
+  const { user } = useSelector((state) => state.user);
+  const [users, setUsers] = useState([]);
+  const [filteredData, setFilteredData] = useState(users);
+
+  // Get users
+  const getUsers = async () => {
+    try {
+      const res = await axios.get("/api/v1/admin/getAllUsers", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      if (res.data.success) {
+        setUsers(res.data.data);
+        setFilteredData(res.data.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // Handle account
+  const handleBlockStatus = async (record, status) => {
+    try {
+      const res = await axios.post(
+        "/api/v1/admin/blockUserAccount",
+        {
+          _id: record._id,
+          userid: record.userid,
+          status: status,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      if (res.data.success) {
+        message.success(res.data.message);
+        getUsers(); // Refresh the user list
+      }
+    } catch (error) {
+      console.log(error);
+      message.error("Something Went Wrong");
+    }
+  };
+
+  const handleAdminStatus = async (record, status) => {
+    try {
+      const res = await axios.post(
+        "/api/v1/admin/UpdateUserToAdmin",
+        {
+          _id: record._id,
+          userid: record.userid,
+          status: status,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      if (res.data.success) {
+        console.log(res.data);
+        message.success(res.data.message);
+        getUsers(); // Refresh the user list
+      }
+    } catch (error) {
+      console.log(error);
+      message.error("Something Went Wrong");
+    }
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  const handleSearch = (value) => {
+    const filtered = users.filter(
+      (user) =>
+        user.name.toLowerCase().includes(value.toLowerCase()) ||
+        user.email.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredData(filtered);
+  };
+
+  const columns = [
+    {
+      title: "Name",
+      dataIndex: "name",
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+    },
+    {
+      title: "Admin",
+      dataIndex: "isAdmin",
+      render: (text, record) => <span>{record.isAdmin ? "Yes" : "No"}</span>,
+    },
+    {
+      title: "Doctor",
+      dataIndex: "isDoctor",
+      render: (text, record) => <span>{record.isDoctor ? "Yes" : "No"}</span>,
+    },
+    {
+      title: "Blocked",
+      dataIndex: "isBlocked",
+      render: (text, record) => <span>{record.isBlocked ? "Yes" : "No"}</span>,
+    },
+    {
+      title: "Actions",
+      dataIndex: "actions",
+      render: (text, record) => (
+        <div className="d-flex">
+          {!record.isAdmin && (
+            <>
+              {!record.isBlocked ? (
+                <>
+                  <button
+                    className="btn btn-success ms-2"
+                    onClick={() => handleAdminStatus(record, true)}
+                  >
+                    Make Admin
+                  </button>
+                  <button
+                    className="btn btn-danger ms-2"
+                    onClick={() => handleBlockStatus(record, true)}
+                  >
+                    Block User
+                  </button>
+                </>
+              ) : (
+                <button
+                  className="btn btn-danger ms-2"
+                  onClick={() => handleBlockStatus(record, false)}
+                >
+                  UnBlock User
+                </button>
+              )}
+            </>
+          )}
+        </div>
+      ),
+    },
+  ];
+
+  return (
+    <Layout>
+      <h1 className="text-center m-2">Users List</h1>{" "}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          marginBottom: 16,
+          marginRight: 10
+        }}
+      >
+        <Input.Search
+          placeholder="Search Users..."
+          allowClear
+          onChange={(e) => handleSearch(e.target.value)}
+          enterButton
+          style={{ width: 300 }}
+        />
+      </div>
+      <Table columns={columns} dataSource={filteredData} pagination={false} />
     </Layout>
   );
 };
