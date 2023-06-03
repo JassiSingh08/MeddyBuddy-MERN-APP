@@ -29,12 +29,36 @@ const Layout = ({ children }) => {
     },
     {
       name: "Appointments",
-      path: "/appointments",
+      path: "/doctor-appointment",
       icon: "fa-solid fa-list",
     },
     {
       name: "Profile",
       path: `/doctor/profile/${user?._id}`,
+      icon: "fa-solid fa-user",
+    },
+  ];
+  
+  //userMenu
+   const userMenu = [
+    {
+      name: "Home",
+      path: "/",
+      icon: "fa-solid fa-house",
+    },
+    {
+      name: "Appointments",
+      path: "/appointments",
+      icon: "fa-solid fa-list",
+    },
+    {
+      name: "Apply Doctor",
+      path: "/apply-doctor",
+      icon: "fa-solid fa-user-doctor",
+    },
+    {
+      name: "Profile",
+      path: `/user/profile/${user?._id}`,
       icon: "fa-solid fa-user",
     },
   ];
@@ -56,15 +80,15 @@ const Layout = ({ children }) => {
               <hr />
             </div>
             <div className="menu">
-              {SidebarMenu.map((menu) => {
+              {SidebarMenu.map((menu, i) => {
                 const isActive = location.pathname === menu.path;
                 return (
-                  <>
-                    <div className={`menu-item ${isActive && "active"}`}>
-                      <i className={menu.icon}></i>
-                      <Link to={menu.path}>{menu.name}</Link>
-                    </div>
-                  </>
+                  <React.Fragment key={i}>
+                  <div className={`menu-item ${isActive && "active"}`}>
+                    <i className={menu.icon}></i>
+                    <Link to={menu.path}>{menu.name}</Link>
+                  </div>
+                </React.Fragment>
                 );
               })}
               <div className={`menu-item `} onClick={handleLogout}>
@@ -79,7 +103,7 @@ const Layout = ({ children }) => {
                 <Badge count={user && user.notification.length}  onClick={()=>{navigate('/notification')}}>
                   <i className="fa-solid fa-bell" style={{cursor:'pointer'}}></i>
                 </Badge>
-                <Link to="/profile">{user?.name}</Link>
+                <Link to={`/user/profile/${user?._id}`}>{user?.name}</Link>
               </div>
             </div>
             <div className="body">{children}</div>

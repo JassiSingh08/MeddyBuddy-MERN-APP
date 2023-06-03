@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Tabs, message } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { showLoading, hideLoading } from  "../redux/features/alertslice";
@@ -23,7 +23,8 @@ const Notification = () => {
         });
         dispatch(hideLoading())
         if(res.data.success){
-            message.success(res.data.message)
+          message.success(res.data.message)
+          window.location.reload()
         }else{
             message.error(res.data.message)
         }
@@ -43,7 +44,8 @@ const Notification = () => {
         })
         dispatch(hideLoading())
         if(res.data.success){
-            message.success(res.data.message)
+          message.success(res.data.message)
+          window.location.reload()            
         }else{
             message.error(res.data.message)
         }
@@ -63,9 +65,10 @@ const Notification = () => {
             <h6 onClick={handleMarkRead}>Mark All Read</h6>
           </div>
           <div style={{cursor:'pointer'}}>
-            {user?.notification.map((notificationMsg) => (
-              <div className="card p-3" onClick={()=>{navigate(notificationMsg.onClickPath)}}>
-                <div className="card-text"> {notificationMsg.message}</div>
+            
+            {user?.notification.map((notificationMsg, i) => (
+              <div className="card p-3" key={i} onClick={()=>{navigate(notificationMsg.onClickPath)}}>
+                <div className="card-text" > {notificationMsg.message}</div>
               </div>
             ))}
           </div>
@@ -75,8 +78,8 @@ const Notification = () => {
             <h6 onClick={handleDeleteAllRead}>Delete All Read</h6>
           </div>
           <div style={{cursor:'pointer'}}>
-            {user?.seenNotification.map((notificationMsg) => (
-              <div className="card p-3" onClick={()=>{navigate(notificationMsg.onClickPath)}}>
+            {user?.seenNotification.map((notificationMsg, i) => (
+              <div className="card p-3"  key={i} onClick={()=>{navigate(notificationMsg.onClickPath)}}>
                 <div className="card-text"> {notificationMsg.message}</div>
               </div>
             ))}

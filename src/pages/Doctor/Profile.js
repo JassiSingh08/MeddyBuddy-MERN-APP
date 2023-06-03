@@ -6,7 +6,6 @@ import { useNavigate, useParams} from "react-router-dom";
 import { Col, Form, Input, Row, TimePicker, message } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import {showLoading, hideLoading} from "../../redux/features/alertslice";
-// import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
 
 const Profile = () => {
   const {user} = useSelector(state => state.user)

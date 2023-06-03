@@ -1,4 +1,5 @@
-export const userMenu = [
+
+/* export const userMenu = [
     {
       name: "Home",
       path: "/",
@@ -16,10 +17,10 @@ export const userMenu = [
     },
     {
       name: "Profile",
-      path: "/profile",
+      path: `/user/profile/${user?._id}`,
       icon: "fa-solid fa-user",
     },
-  ];
+  ]; */
   
   // admin menu
   export const adminMenu = [

@@ -17,13 +17,18 @@ const Login = () => {
       dispatch(showLoading());
       const res = await axios.post("/api/v1/user/login", values);
       dispatch(hideLoading());
-      if (res.data.success) {
+      // const isBlocked = res.data.data.isBlocked;
+      // if (isBlocked) {
+      //   message.error(" Your account is blocked. Please contact the administrator.");
+      // }
+       if (res.data.success) {  
+        console.log(res.data)  
         localStorage.setItem("token", res.data.token);
         message.success("Login Successfully");
         navigate("/");
-      } else {
-        message.error(res.data.message);
-      }
+        } else {
+          message.error(res.data.message);
+        }
     } catch (error) {
       dispatch(hideLoading());
       console.log(error);

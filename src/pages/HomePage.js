@@ -31,8 +31,8 @@ const HomePage = () => {
     <h1 className='text-center'>HomePage</h1>
     <Row>
     {
-      doctors && doctors.map(doctor => (
-        <DoctorList doctor={doctor} />
+      doctors && doctors.map((doctor,i) => (
+        <DoctorList key={i} doctor={doctor} />
       ))
     }
     </Row>
