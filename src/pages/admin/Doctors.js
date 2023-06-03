@@ -104,7 +104,7 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../../components/Layout";
 import axios from "axios";
-import { Table, message, Input } from "antd";
+import { Table, message, Input, Row } from "antd";
 
 const { Search } = Input;
 
@@ -175,16 +175,20 @@ const Doctors = () => {
     {
       title: "Status",
       dataIndex: "status",
+      align: 'center',
     },
     {
       title: "Phone Number",
       dataIndex: "phone",
+      align: 'center',
     },
     {
       title: "Actions",
       dataIndex: "actions",
+      width: 400,
+      align: 'center',
       render: (text, record) => (
-        <div className="d-flex">
+        <div className="d-flex justify-content-center">
           {record.status === "pending" ? (
             <>
               <button
@@ -234,7 +238,7 @@ const handleSearch = (value) => {
           display: "flex",
           justifyContent: "flex-end",
           marginBottom: 16,
-          marginRight: 10
+          marginRight: 10,
         }}
       >
         <Search
@@ -245,7 +249,14 @@ const handleSearch = (value) => {
           style={{ width: 300 }}
         />
       </div>
-      <Table columns={columns} dataSource={filteredDoctors} pagination={false}/>
+      <div style={{ maxHeight: "480px", width: "100%" }}>
+        <Table
+          columns={columns}
+          dataSource={filteredDoctors}
+          pagination={false}
+          scroll={{ y: 480 }}
+        />
+      </div>
     </Layout>
   );
 };

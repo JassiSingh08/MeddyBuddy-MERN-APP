@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect,  useState} from 'react';
 import axios from 'axios';
 import Layout from '../components/Layout';
 import { Input, Row } from 'antd';
@@ -8,6 +8,10 @@ import DoctorList from '../components/DoctorList';
 const HomePage = () => {
   const [doctors, setDoctors] = useState([])
   const [filteredDoctors, setFilteredDoctors] = useState([]);
+
+
+
+
   //login user data
   const getuserdata = async() => {
     try {
@@ -50,6 +54,7 @@ const HomePage = () => {
   return (
     <Layout>
       <h1 className="text-center">HomePage</h1>
+
       <div
         style={{
           display: "flex",

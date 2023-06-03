@@ -123,7 +123,7 @@ const Users = () => {
  */
 
 import React, { useState, useEffect } from "react";
-import { Table, Input,message } from "antd";
+import { Table, Input,message} from "antd";
 import Layout from "./../../components/Layout";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -131,7 +131,7 @@ import { useSelector } from "react-redux";
 const Users = () => {
   const { user } = useSelector((state) => state.user);
   const [users, setUsers] = useState([]);
-  const [filteredData, setFilteredData] = useState(users);
+  const [filteredUsers, setfilteredUsers] = useState(users);
 
   // Get users
   const getUsers = async () => {
@@ -143,7 +143,7 @@ const Users = () => {
       });
       if (res.data.success) {
         setUsers(res.data.data);
-        setFilteredData(res.data.data);
+        setfilteredUsers(res.data.data);
       }
     } catch (error) {
       console.log(error);
@@ -212,36 +212,44 @@ const Users = () => {
         user.name.toLowerCase().includes(value.toLowerCase()) ||
         user.email.toLowerCase().includes(value.toLowerCase())
     );
-    setFilteredData(filtered);
+    setfilteredUsers(filtered);
   };
 
   const columns = [
     {
       title: "Name",
       dataIndex: "name",
+      align: 'center',
     },
     {
       title: "Email",
       dataIndex: "email",
+      width: 250,
+      align: 'center',
     },
     {
       title: "Admin",
       dataIndex: "isAdmin",
+      align: 'center',
       render: (text, record) => <span>{record.isAdmin ? "Yes" : "No"}</span>,
     },
     {
       title: "Doctor",
       dataIndex: "isDoctor",
+      align: 'center',
       render: (text, record) => <span>{record.isDoctor ? "Yes" : "No"}</span>,
     },
     {
       title: "Blocked",
       dataIndex: "isBlocked",
+      align: 'center',
       render: (text, record) => <span>{record.isBlocked ? "Yes" : "No"}</span>,
     },
     {
       title: "Actions",
       dataIndex: "actions",
+      width: 300,
+      align: 'center',
       render: (text, record) => (
         <div className="d-flex">
           {!record.isAdmin && (
@@ -284,7 +292,7 @@ const Users = () => {
           display: "flex",
           justifyContent: "flex-end",
           marginBottom: 16,
-          marginRight: 10
+          marginRight: 10,
         }}
       >
         <Input.Search
@@ -295,7 +303,14 @@ const Users = () => {
           style={{ width: 300 }}
         />
       </div>
-      <Table columns={columns} dataSource={filteredData} pagination={false} />
+      <div style={{ maxHeight: "480px", width: "100%" }}>
+        <Table
+          columns={columns}
+          dataSource={filteredUsers}
+          pagination={false}
+          scroll={{ y: 480 }}
+        />
+      </div>
     </Layout>
   );
 };

@@ -22,7 +22,7 @@
     },
   ]; */
   
-  // admin menu
+/*   // admin menu
   export const adminMenu = [
     {
       name: "Home",
@@ -42,7 +42,7 @@
     },
     {
       name: "Profile",
-      path: "/profile",
+      path: `/admin/profile/${user?._id}`,
       icon: "fa-solid fa-user",
     },
-  ];
+  ]; */

@@ -63,6 +63,30 @@ const Layout = ({ children }) => {
     },
   ];
   
+  // admin menu
+  const adminMenu = [
+    {
+      name: "Home",
+      path: "/",
+      icon: "fa-solid fa-house",
+    },
+  
+    {
+      name: "Doctors",
+      path: "/admin/doctors",
+      icon: "fa-solid fa-user-doctor",
+    },
+    {
+      name: "Users",
+      path: "/admin/users",
+      icon: "fa-solid fa-user",
+    },
+    {
+      name: "Profile",
+      path: `/admin/profile/${user?._id}`,
+      icon: "fa-solid fa-user",
+    },
+  ];
 
   // redering menu list
   const SidebarMenu = user?.isAdmin
@@ -103,7 +127,11 @@ const Layout = ({ children }) => {
                 <Badge count={user && user.notification.length}  onClick={()=>{navigate('/notification')}}>
                   <i className="fa-solid fa-bell" style={{cursor:'pointer'}}></i>
                 </Badge>
-                <Link to={`/user/profile/${user?._id}`}>{user?.name}</Link>
+                <Link to={
+                    !user?.isAdmin
+                      ? `/user/profile/${user?._id}`
+                      : `/admin/profile/${user?._id}`
+                  }>{user?.name}</Link>
               </div>
             </div>
             <div className="body layout-container">{children}</div>
