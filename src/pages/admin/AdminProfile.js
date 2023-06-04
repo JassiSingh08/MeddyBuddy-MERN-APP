@@ -4,7 +4,7 @@ import Layout from '../../components/Layout'
 const AdminProfile = () => {
   return (
     <Layout>
-        AdminProfile
+        <h2 className='text-center'>Admin profile</h2>
     </Layout>
   )
 }

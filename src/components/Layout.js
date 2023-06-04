@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
   };
 
   //doctor menu
-   const doctorMenu = [
+  const doctorMenu = [
     {
       name: "Home",
       path: "/",
@@ -38,9 +38,9 @@ const Layout = ({ children }) => {
       icon: "fa-solid fa-user",
     },
   ];
-  
+
   //userMenu
-   const userMenu = [
+  const userMenu = [
     {
       name: "Home",
       path: "/",
@@ -62,7 +62,7 @@ const Layout = ({ children }) => {
       icon: "fa-solid fa-user",
     },
   ];
-  
+
   // admin menu
   const adminMenu = [
     {
@@ -70,7 +70,7 @@ const Layout = ({ children }) => {
       path: "/",
       icon: "fa-solid fa-house",
     },
-  
+
     {
       name: "Doctors",
       path: "/admin/doctors",
@@ -83,7 +83,8 @@ const Layout = ({ children }) => {
     },
     {
       name: "Profile",
-      path: `/admin/profile/${user?._id}`,
+      path: `/user/profile/${user?._id}`,
+      // path: `/admin/profile/${user?._id}`,
       icon: "fa-solid fa-user",
     },
   ];
@@ -108,11 +109,11 @@ const Layout = ({ children }) => {
                 const isActive = location.pathname === menu.path;
                 return (
                   <React.Fragment key={i}>
-                  <div className={`menu-item ${isActive && "active"}`}>
-                    <i className={menu.icon}></i>
-                    <Link to={menu.path}>{menu.name}</Link>
-                  </div>
-                </React.Fragment>
+                    <div className={`menu-item ${isActive && "active"}`}>
+                      <i className={menu.icon}></i>
+                      <Link to={menu.path}>{menu.name}</Link>
+                    </div>
+                  </React.Fragment>
                 );
               })}
               <div className={`menu-item `} onClick={handleLogout}>
@@ -123,15 +124,24 @@ const Layout = ({ children }) => {
           </div>
           <div className="content">
             <div className="header">
-              <div className="header-content" >
-                <Badge count={user && user.notification.length}  onClick={()=>{navigate('/notification')}}>
-                  <i className="fa-solid fa-bell" style={{cursor:'pointer'}}></i>
+              <div className="header-content">
+                <Badge
+                  count={user && user.notification.length}
+                  onClick={() => {
+                    navigate("/notification");
+                  }}
+                >
+                  <i
+                    className="fa-solid fa-bell"
+                    style={{ cursor: "pointer" }}
+                  ></i>
                 </Badge>
-                <Link to={
-                    !user?.isAdmin
-                      ? `/user/profile/${user?._id}`
-                      : `/admin/profile/${user?._id}`
-                  }>{user?.name}</Link>
+                <Link to={`/user/profile/${user?._id}`}>{user?.name}</Link>
+                {/* <Link to={
+              !user?.isAdmin
+                ? `/user/profile/${user?._id}`
+                : `/admin/profile/${user?._id}`
+            }>{user?.name}</Link> */}
               </div>
             </div>
             <div className="body layout-container">{children}</div>
