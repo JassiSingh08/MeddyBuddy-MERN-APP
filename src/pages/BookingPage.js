@@ -74,6 +74,9 @@ const BookingPage = () => {
 
   const HandleAvailability = async () => {
     try {
+      if (!date && !time) {
+        return alert("Date and Time Required");
+      }
       dispatch(showLoading());
       const res = await axios.post(
         "/api/v1/user/booking-availability",

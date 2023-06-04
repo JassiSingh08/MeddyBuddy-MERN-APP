@@ -169,6 +169,11 @@ const DoctorAppointment = () => {
 
   const columns = [
     {
+      title: "Patient's Name",
+      dataIndex: "userInfo",
+      render: (text, record) => <span>{record.userInfo.name}</span>,
+    },
+    {
       title: "ID",
       dataIndex: "_id",
     },

@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Col, Form, Input, Row, message } from "antd";
 import { hideLoading, showLoading } from '../redux/features/alertslice'
-import TextArea from 'antd/es/input/TextArea'
 
 
 const UserProfile = () => {
