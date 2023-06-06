@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Col, Form, Input, Row, message } from "antd";
 import { hideLoading, showLoading } from '../redux/features/alertslice'
 
-
 const UserProfile = () => {
   const { user } = useSelector((state) => state.user);
   const [User, setUser] = useState(null);
@@ -64,7 +63,7 @@ const UserProfile = () => {
 
   return (
     <Layout>
-      <h1>Manage Profile</h1>
+      <h1 className='text-center'>Manage Profile</h1>
       {User && (
         <Form
           className="m-4"
@@ -90,16 +89,6 @@ const UserProfile = () => {
             </Col>
           </Row>
           <Row className="mx-5 my-2">
-{/*             <Col className="mx-5 my-2" xs={24} md={24} lg={8}>
-              <Form.Item
-                label="Phone No."
-                name="phone"
-                required
-                rules={[{ required: true }]}
-              >
-                <Input type="tel" placeholder="Please Enter Your Name" />
-              </Form.Item>
-            </Col> */}
             <Col className="mx-5 my-2" xs={24} md={24} lg={8}>
               <Form.Item
                 label="Email"
@@ -110,6 +99,8 @@ const UserProfile = () => {
                 <Input type="email" placeholder="Please Enter Your Email" />
               </Form.Item>
             </Col>
+          </Row>
+          <Row className="mx-5 my-2">
             <Col className="mx-5 my-2" xs={24} md={24} lg={8}>
               <Form.Item
                 label="Password"
@@ -117,16 +108,20 @@ const UserProfile = () => {
                 required
                 rules={[{ required: true }]}
               >
-                <Input type="password" placeholder="Please Enter Updated Password" />
+                <Input
+                  type="password"
+                  placeholder="Please Enter Updated Password"
+                />
               </Form.Item>
             </Col>
           </Row>
-
-          <div className="d-flex justify-content-end">
-            <button className="btn btn-primary" type="submit">
-              Update
-            </button>
-          </div>
+          <Row className="mx-5 my-2">
+            <div className="d-flex justify-content-end">
+              <button className="btn btn-primary" type="submit">
+                Update
+              </button>
+            </div>
+          </Row>
         </Form>
       )}
     </Layout>

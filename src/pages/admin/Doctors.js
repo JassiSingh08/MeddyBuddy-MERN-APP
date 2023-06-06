@@ -166,6 +166,7 @@ const Doctors = () => {
     {
       title: "Name",
       dataIndex: "name",
+      align: 'center',
       render: (text, record) => (
         <span>
           {record.firstName} {" "} {record.lastName}
@@ -176,6 +177,7 @@ const Doctors = () => {
       title: "Status",
       dataIndex: "status",
       align: 'center',
+      responsive: ["md"]
     },
     {
       title: "Phone Number",
@@ -185,7 +187,6 @@ const Doctors = () => {
     {
       title: "Actions",
       dataIndex: "actions",
-      width: 400,
       align: 'center',
       render: (text, record) => (
         <div className="d-flex justify-content-center">

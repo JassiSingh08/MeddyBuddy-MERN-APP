@@ -75,14 +75,14 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route
+            {/* <Route
               path="/admin/profile/:id"
               element={
                 <ProtectedRoute>
                   <AdminProfile />
                 </ProtectedRoute>
               }
-            />
+            /> */}
             <Route
               path="/doctor/profile/:id"
               element={

@@ -2,14 +2,14 @@ import React, { useEffect, useState} from "react";
 import Layout from "./../../components/Layout";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams} from "react-router-dom";
-import { Col, Form, Input, Row, TimePicker, message } from "antd";
+import {useParams} from "react-router-dom";
+import { Col, Form, Input, Row, message } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import {showLoading, hideLoading} from "../../redux/features/alertslice";
 
 const Profile = () => {
   const {user} = useSelector(state => state.user)
-  const [doctor , setDoctor] = useState(null)  
+  const [doctor , setDoctor] = useState(null) 
   const params = useParams()
   // const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -59,7 +59,7 @@ const Profile = () => {
   },[])
   return (
     <Layout>
-      <h1>Manage Profile</h1>
+      <h1 className="text-center">Manage Profile</h1>
       {doctor && (
         <Form
           className="m-4"

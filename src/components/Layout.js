@@ -1,5 +1,5 @@
 import React from "react";
-import { adminMenu, userMenu } from "./../Data/Data";
+// import { adminMenu, userMenu } from "./../Data/Data";
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -12,6 +12,7 @@ const Layout = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
 
   // logout funtion
   const handleLogout = () => {
@@ -85,7 +86,7 @@ const Layout = ({ children }) => {
       name: "Profile",
       path: `/user/profile/${user?._id}`,
       // path: `/admin/profile/${user?._id}`,
-      icon: "fa-solid fa-user",
+      icon: "fa-solid fa-address-card",
     },
   ];
 
@@ -109,7 +110,9 @@ const Layout = ({ children }) => {
                 const isActive = location.pathname === menu.path;
                 return (
                   <React.Fragment key={i}>
-                    <div className={`menu-item ${isActive && "active"}`}>
+                    <div
+                      className={`menu-item hoverStyle ${isActive && "active"}`}
+                    >
                       <i className={menu.icon}></i>
                       <Link to={menu.path}>{menu.name}</Link>
                     </div>
@@ -137,11 +140,7 @@ const Layout = ({ children }) => {
                   ></i>
                 </Badge>
                 <Link to={`/user/profile/${user?._id}`}>{user?.name}</Link>
-                {/* <Link to={
-              !user?.isAdmin
-                ? `/user/profile/${user?._id}`
-                : `/admin/profile/${user?._id}`
-            }>{user?.name}</Link> */}
+                {/* <Link to={!user?.isAdmin ? `/user/profile/${user?._id}` : `/admin/profile/${user?._id}` }>{user?.name}</Link> */}
               </div>
             </div>
             <div className="body layout-container">{children}</div>

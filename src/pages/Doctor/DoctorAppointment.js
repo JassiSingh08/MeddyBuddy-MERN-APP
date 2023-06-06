@@ -141,10 +141,26 @@ const DoctorAppointment = () => {
       console.log(error);
     }
   };
-
   useEffect(() => {
     getAppointments();
   }, []);
+
+  const generateRandomId = () => {
+    const existingId = localStorage.getItem('generatedId');
+  
+    if (existingId) {
+      return existingId;
+    }
+  
+    const min = 10000; // Minimum value for the random number (inclusive)
+    const max = 99999; // Maximum value for the random number (inclusive)
+    const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+    const newId = randomNum.toString();
+  
+    localStorage.setItem('generatedId', newId);
+  
+    return newId;
+  };
 
   const handleStatus = async (record, status) => {
     try {
@@ -169,17 +185,38 @@ const DoctorAppointment = () => {
 
   const columns = [
     {
-      title: "Patient's Name",
-      dataIndex: "userInfo",
-      render: (text, record) => <span>{record.userInfo.name}</span>,
+      title: "Patient's Name/Date&Time",
+      render: (record) => (
+        <React.Fragment>
+          {record.userInfo.name}
+          <br />
+          {moment(record.date).format("DD-MM-YYYY")} &nbsp;
+          {moment(record.time).format("HH:mm")}
+        </React.Fragment>
+      ),
+      responsive: ["xs"],
     },
     {
-      title: "ID",
-      dataIndex: "_id",
+      title: "Status/ID",
+      render: (record) => (
+        <React.Fragment>
+          {record.status.charAt(0).toUpperCase() + record.status.slice(1)}
+          <br />
+          {`${generateRandomId()}`}
+        </React.Fragment>
+      ),
+      responsive: ["xs"],
+    },
+    {
+      title: "Patient's Name",
+      dataIndex: "userInfo",
+      responsive: ["sm"],
+      render: (text, record) => <span>{record.userInfo.name}</span>,
     },
     {
       title: "Date & Time",
       dataIndex: "date",
+      responsive: ["sm"],
       render: (text, record) => (
         <span>
           {moment(record.date).format("DD-MM-YYYY")} &nbsp;
@@ -188,8 +225,16 @@ const DoctorAppointment = () => {
       ),
     },
     {
+      title: "ID",
+      dataIndex: "_id",
+      responsive: ["sm"],
+      render: (text, record) =>  generateRandomId(),
+    },
+    {
       title: "Status",
       dataIndex: "status",
+      render: (text, record) => <span>{record.status.charAt(0).toUpperCase() + record.status.slice(1)}</span>,
+      responsive: ["sm"],
     },
     {
       title: "Actions",
@@ -218,7 +263,7 @@ const DoctorAppointment = () => {
   ];
   return (
     <Layout>
-      <h1>Appoinmtnets Lists</h1>
+      <h1 className="text-center">Appointment Lists</h1>
       <Table columns={columns} dataSource={appointments} />
     </Layout>
   );

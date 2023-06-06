@@ -126,10 +126,10 @@ import React, { useState, useEffect } from "react";
 import { Table, Input,message} from "antd";
 import Layout from "./../../components/Layout";
 import axios from "axios";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const Users = () => {
-  const { user } = useSelector((state) => state.user);
+  // const { user } = useSelector((state) => state.user);
   const [users, setUsers] = useState([]);
   const [filteredUsers, setfilteredUsers] = useState(users);
 
@@ -217,38 +217,53 @@ const Users = () => {
 
   const columns = [
     {
+      title: "Name/Email",
+      render: (record) => (
+        <React.Fragment>
+          {record.name}
+          <br />
+          {record.email}
+        </React.Fragment>
+      ),
+      responsive: ["xs"],
+    },
+    {
       title: "Name",
       dataIndex: "name",
       align: 'center',
+      responsive: ["sm"],
     },
     {
       title: "Email",
       dataIndex: "email",
-      width: 250,
+      // width: 250,
       align: 'center',
+      responsive: ["md"],
     },
     {
       title: "Admin",
       dataIndex: "isAdmin",
       align: 'center',
       render: (text, record) => <span>{record.isAdmin ? "Yes" : "No"}</span>,
+      responsive: ["lg"],
     },
     {
       title: "Doctor",
       dataIndex: "isDoctor",
       align: 'center',
       render: (text, record) => <span>{record.isDoctor ? "Yes" : "No"}</span>,
+      responsive: ["sm"],
     },
     {
       title: "Blocked",
       dataIndex: "isBlocked",
       align: 'center',
       render: (text, record) => <span>{record.isBlocked ? "Yes" : "No"}</span>,
+      responsive: ["lg"],
     },
     {
       title: "Actions",
       dataIndex: "actions",
-      width: 300,
       align: 'center',
       render: (text, record) => (
         <div className="d-flex">
