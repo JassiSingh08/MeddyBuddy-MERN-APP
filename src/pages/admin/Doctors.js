@@ -185,6 +185,17 @@ const Doctors = () => {
       align: 'center',
     },
     {
+      title: "Prescription Document",
+      dataIndex: "prescription",
+      align: 'center',
+      responsive: ["md"],
+      render: (text, record) => (
+        <span>
+          {!record.prescription ? "No" : "Yes"}
+        </span>
+      ),
+    },
+    {
       title: "Actions",
       dataIndex: "actions",
       align: 'center',
@@ -226,7 +237,9 @@ const handleSearch = (value) => {
         doctor.firstName.toLowerCase().includes(value.toLowerCase())) ||
       (doctor.lastName &&
         doctor.lastName.toLowerCase().includes(value.toLowerCase())) ||
-      (doctor.status && doctor.status.toLowerCase().includes(value.toLowerCase()))
+      (doctor.status && doctor.status.toLowerCase().includes(value.toLowerCase())) ||
+      (doctor.prescription ? "Yes" : "No").toLowerCase() ===
+      value.toLowerCase()
   );
   setFilteredDoctors(filtered);
 };
