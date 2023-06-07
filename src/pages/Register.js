@@ -30,7 +30,27 @@ const Register = () => {
     }
   }
     
+  const validatePassword = (_, value) => {
+    // Password validation regex pattern
+    const passwordPattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*]).{8,}$/;
 
+    if (!value || passwordPattern.test(value)) {
+      return Promise.resolve();
+    }
+
+    return Promise.reject(
+      ''
+    );
+  };
+
+/*   const handlePasswordFocus = () => {
+    setPasswordFocused(true);
+  };
+
+  const handlePasswordBlur = () => {
+    setPasswordFocused(false);
+  };
+ */
   const navtoLogin = () => {
     navigate("/login");
 }
@@ -56,14 +76,11 @@ const Register = () => {
     //     </div>
     //     <button type="submit" className="btn btn-primary"  >Create Account</button>
     //   </Form>
-      // <h6 className='my-4'>Already have an Account? <span style={{cursor: 'pointer', textDecoration:"underline"}} onClick={navtoLogin}>Login Here. </span></h6>
+    // <h6 className='my-4'>Already have an Account? <span style={{cursor: 'pointer', textDecoration:"underline"}} onClick={navtoLogin}>Login Here. </span></h6>
     // </div>
     // </>
     <>
-      <section
-        className="vh-100"
-        style={{ backgroundColor: "#1677ffec" }}
-      >
+      <section className="vh-100" style={{ backgroundColor: "#1677ffec" }}>
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-lg-12 col-xl-11">
@@ -71,7 +88,7 @@ const Register = () => {
                 <div className="card-body p-md-5">
                   <div className="row justify-content-center">
                     <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                      <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                      <p className="text-center h1 fw-bold mb-3 mx-1 mx-md-4 mt-2">
                         Sign up
                       </p>
 
@@ -83,7 +100,7 @@ const Register = () => {
                         <div className="d-flex flex-row align-items-center mb-4">
                           <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div className="form-outline flex-fill mb-0">
-                            <Form.Item label="Name:" name="name">
+                            <Form.Item label="Your Name:" name="name">
                               <Input
                                 type="text"
                                 placeholder="Enter your name"
@@ -96,7 +113,7 @@ const Register = () => {
                         <div className="d-flex flex-row align-items-center mb-4">
                           <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                           <div className="form-outline flex-fill mb-0">
-                            <Form.Item label="Email:" name="email">
+                            <Form.Item label="Your Email:" name="email">
                               <Input
                                 type="email"
                                 placeholder="Enter your email"
@@ -109,17 +126,27 @@ const Register = () => {
                         <div className="d-flex flex-row align-items-center mb-4">
                           <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                           <div className="form-outline flex-fill mb-0">
-                            <Form.Item label="Password:" name="password">
-                              <Input
-                                type="password"
-                                placeholder="Enter password"
-                                autoComplete="off"
+                            <Form.Item
+                              name="password"
+                              label="Please creare a Password"
+                              rules={[
+                                { required: true },
+                                { validator: validatePassword },
+                              ]}
+                              hasFeedback
+                              // hasFeedback={passwordFocused}
+                            >
+                              <Input.Password
+                              // onFocus={handlePasswordFocus}
+                              // onBlur={handlePasswordBlur}
                               />
                             </Form.Item>
                           </div>
                         </div>
-
-                        <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                        <div>
+                          <p className="small mt-1 pt-1 mb-3">*Password must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters.</p>
+                        </div>
+                        <div className="d-flex justify-content-center mx-4 mb-2 mb-lg-4">
                           <button
                             type="submit"
                             className="btn btn-primary btn-lg"
@@ -127,7 +154,7 @@ const Register = () => {
                             Register
                           </button>
                         </div>
-                        <div className="text-center text-lg-start mt-4 pt-2" >
+                        <div className="text-center text-lg-start mt-4 pt-2">
                           <p className="small fw-bold mt-2 pt-1 mb-0">
                             Already have an Account?{" "}
                             <span
@@ -143,7 +170,7 @@ const Register = () => {
                         </div>
                       </Form>
                     </div>
-                    <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                    <div className="col-md-8 col-lg-6 col-xl-6 d-flex align-items-center order-1 order-lg-2">
                       <img
                         src={SignUpPageImage}
                         width={600}

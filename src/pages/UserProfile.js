@@ -75,7 +75,7 @@ const UserProfile = () => {
           }}
         >
           {/* initial value in build in atnd helping in auto populate form */}
-          <h4 className="mb-4">Personal Details : </h4>
+          <h4 className="mb-4">Update Personal Details : </h4>
           <Row className="mx-5 my-2">
             <Col className="mx-5 my-2" xs={24} md={24} lg={8}>
               <Form.Item
