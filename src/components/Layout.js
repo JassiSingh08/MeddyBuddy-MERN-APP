@@ -15,10 +15,8 @@ import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { HiOutlineBars3 } from "react-icons/hi2";
-import { FiArrowRight } from "react-icons/fi";
 
 const Layout = ({ children }) => {
   const [openMenu, setOpenMenu] = useState(false);

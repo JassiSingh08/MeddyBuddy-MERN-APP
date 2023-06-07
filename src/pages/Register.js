@@ -128,7 +128,7 @@ const Register = () => {
                           <div className="form-outline flex-fill mb-0">
                             <Form.Item
                               name="password"
-                              label="Please creare a Password"
+                              label="Please create a Password"
                               rules={[
                                 { required: true },
                                 { validator: validatePassword },
@@ -176,7 +176,7 @@ const Register = () => {
                         width={600}
                         height={500}
                         className="img-fluid"
-                        alt="Registration Image"
+                        alt="Registration"
                       />
                     </div>
                   </div>

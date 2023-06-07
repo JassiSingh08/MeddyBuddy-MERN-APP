@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Form, Input, message } from "antd";
 import axios from "axios";
 import {useDispatch} from "react-redux";
@@ -103,14 +103,20 @@ const Login = () => {
                         <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-0">
                           <Form.Item label="Password" name="password">
-                            <Input
-                              type="password"
-                              placeholder="Enter password"
+                            <Input.Password
+                              placeholder="Enter password your pssword"
                               autoComplete="off"
                             />
                           </Form.Item>
                         </div>
                       </div>
+
+                      {/* FORGOT PASSWORD */}
+
+                        <Link to="/forgot-password">Forgot Password?</Link>
+
+                        {/* ========= */}
+
                       <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                         <button
                           type="submit"
@@ -139,7 +145,7 @@ const Login = () => {
                     <img
                       src={LoginPageImage}
                       className="img-fluid"
-                      alt="Login Image"
+                      alt="Login"
                     />
                   </div>
                 </div>

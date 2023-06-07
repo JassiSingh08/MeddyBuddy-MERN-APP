@@ -143,24 +143,9 @@ const DoctorAppointment = () => {
   };
   useEffect(() => {
     getAppointments();
+    // eslint-disable-next-line
   }, []);
 
-  const generateRandomId = () => {
-    const existingId = localStorage.getItem('generatedId');
-  
-    if (existingId) {
-      return existingId;
-    }
-  
-    const min = 10000; // Minimum value for the random number (inclusive)
-    const max = 99999; // Maximum value for the random number (inclusive)
-    const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
-    const newId = randomNum.toString();
-  
-    localStorage.setItem('generatedId', newId);
-  
-    return newId;
-  };
 
   const handleStatus = async (record, status) => {
     try {
@@ -197,12 +182,12 @@ const DoctorAppointment = () => {
       responsive: ["xs"],
     },
     {
-      title: "Status/ID",
+      title: "Status",
       render: (record) => (
         <React.Fragment>
           {record.status.charAt(0).toUpperCase() + record.status.slice(1)}
           <br />
-          {`${generateRandomId()}`}
+          { }
         </React.Fragment>
       ),
       responsive: ["xs"],
@@ -224,12 +209,12 @@ const DoctorAppointment = () => {
         </span>
       ),
     },
-    {
+/*     {
       title: "ID",
       dataIndex: "_id",
       responsive: ["sm"],
-      render: (text, record) =>  generateRandomId(),
-    },
+      render: (text, record) => ( record._id)
+    }, */
     {
       title: "Status",
       dataIndex: "status",
