@@ -4,6 +4,7 @@ import { Form, Input, message } from "antd";
 import axios from "axios";
 import {useDispatch} from "react-redux";
 import {showLoading, hideLoading} from "../redux/features/alertslice";
+import LoginPageImage from "../Assets/LoginPageImage.jpg"
 
 const Login = () => { 
   let navigate = useNavigate();
@@ -69,8 +70,8 @@ const Login = () => {
     //     </h6>
     //   </div>
     // </>
-    <section className="vh-100" style={{ backgroundColor: "#1677ffec" }}>
-      <div className="container h-100">
+    <section className="vh-100 " style={{ backgroundColor: "#1677ffec" }}>
+      <div className="container h-100 ">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-lg-12 col-xl-11">
             <div className="card text-black" style={{ borderRadius: "25px" }}>
@@ -136,7 +137,7 @@ const Login = () => {
                   </div>
                   <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
                     <img
-                      src="https://static.vecteezy.com/system/resources/thumbnails/005/514/532/small_2x/illustration-online-medical-concept-medical-consultation-by-internet-with-doctor-online-doctor-telemedicine-medical-service-online-for-patients-health-care-online-illustration-free-vector.jpg"
+                      src={LoginPageImage}
                       className="img-fluid"
                       alt="Login Image"
                     />

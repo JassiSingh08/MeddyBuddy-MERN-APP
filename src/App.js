@@ -17,9 +17,25 @@ import Appointments from "./pages/Appointments";
 import DoctorAppointment from "./pages/Doctor/DoctorAppointment";
 import UserProfile from "./pages/UserProfile";
 import AdminProfile from "./pages/admin/AdminProfile";
+import LandingPage from "./pages/LandingPage";
+import { useEffect, useState } from "react";
 
 function App() {
-  const {loading} = useSelector(state => state.alerts);
+  const { loading } = useSelector((state) => state.alerts);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Check if the user is logged in
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token); // Set isLoggedIn to true if token exists, false otherwise
+    setIsLoading(false);
+  });
+
+  if (isLoading) {
+    return <Spinner />; // Render a loading state while retrieving the token
+  }
   return (
     <>
       <BrowserRouter>
@@ -29,11 +45,22 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={
-                <ProtectedRoute>
-                  <HomePage />
-                </ProtectedRoute>
-              }
+              // element={
+              //   <ProtectedRoute>
+              //     <HomePage />
+              //   </ProtectedRoute>
+              // }  
+               element={
+                !isLoggedIn ? (
+                  <PublicRoute>
+                    <LandingPage />
+                  </PublicRoute>
+                ) : (
+                  <ProtectedRoute>
+                    <HomePage />
+                  </ProtectedRoute>
+                )
+              } 
             />
             <Route
               path="/apply-doctor"

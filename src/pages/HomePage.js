@@ -72,11 +72,11 @@ const HomePage = () => {
         />
       </div>
       <Row>
-        {(filteredDoctors.length > 0 ? filteredDoctors : doctors).map(
-          (doctor, i) => (
-            <DoctorList key={i} doctor={doctor} />
-          )
-        )}
+          {(filteredDoctors.length > 0 ? filteredDoctors : doctors).map(
+            (doctor, i) => (
+              <DoctorList key={i} doctor={doctor} />
+            )
+          )}
       </Row>
     </Layout>
   );

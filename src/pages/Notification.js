@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Tabs, message } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { showLoading, hideLoading } from  "../redux/features/alertslice";
@@ -55,6 +55,7 @@ const Notification = () => {
         message.error("Something went wrong")
     }
   };
+
 
   return (
     <Layout>

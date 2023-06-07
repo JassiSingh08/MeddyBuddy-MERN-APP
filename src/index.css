@@ -54,14 +54,18 @@ body {
   border-radius: 5px;
   /* background-color: rgb(11, 121, 38); */
   /* background-color:#1677ff; */
-  background: linear-gradient(140deg,
+  /* background: linear-gradient(140deg,
       #116db4 0%,
       #309df0 50%,
-      #116db4d9 75%) !important;
+      #116db4d9 75%) !important; */
   box-shadow: 0 0 2px gray;
   margin-right: 20px;
   color: white;
   overflow: hidden;
+  background: #1A2980;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #26D0CE, #1A2980);  
+  background: linear-gradient(to top, #26D0CE, #1A2980);
+  
 }
 
 .body {
@@ -87,6 +91,11 @@ body {
   margin-top: 30px;
 }
 
+.menu-itemMobile {
+  margin-top:10px;
+  margin-bottom: 10px;
+}
+
 .menu-item a {
 
   color: rgb(255, 255, 255);
@@ -104,7 +113,8 @@ body {
   border-radius: 100vw;
   background-color: white;
   padding: 10px;
-  margin: 20px 55px;
+  margin: 20px 40px;
+  width: 175px;
 }
 
 .active a {
@@ -118,6 +128,10 @@ body {
 .content {
   width: 90%;
   height: 100vh;
+}
+
+.header-logo{
+  display: none;
 }
 
 .header {
@@ -421,17 +435,41 @@ body {
   }
 
   .sidebar {
+    display: none;
     width: 100%;
     margin-right: 0;
   }
 
   .content {
+    
     width: 100%;
     margin-top: 20px;
   }
 
+  .header-logo{
+    display: flex;
+    margin-bottom: 25px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header{
+    background: linear-gradient(140deg,
+    #116db4 0%,
+    #309df0 50%,
+    #116db4d9 75%) !important;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    border-radius: 10px;
+    color: #fff;
+  }
+  
   .header-content {
     justify-content: flex-start;
+  }
+  .header-content .Navcolor{
+    color: #fff;
   }
 
   .active {

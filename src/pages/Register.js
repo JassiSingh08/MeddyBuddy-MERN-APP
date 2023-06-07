@@ -1,10 +1,11 @@
 import React from "react";
 import { Form, Input, message } from "antd";
 import {useNavigate} from "react-router-dom";
-import { NavLink } from "react-router-dom";
 import axios from 'axios';
 import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../redux/features/alertslice";
+import SignUpPageImage from "../Assets/SignUpPageImage.jpg"
+
 
 const Register = () => {
   let navigate = useNavigate();
@@ -144,7 +145,7 @@ const Register = () => {
                     </div>
                     <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
                       <img
-                        src="https://static.vecteezy.com/system/resources/previews/001/981/735/original/couple-of-medical-staff-healthcare-workers-characters-free-vector.jpg"
+                        src={SignUpPageImage}
                         width={600}
                         height={500}
                         className="img-fluid"
