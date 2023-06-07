@@ -77,9 +77,9 @@ const Login = () => {
             <div className="card text-black" style={{ borderRadius: "25px" }}>
               <div className="card-body p-md-5" >
                 <div className="row justify-content-center">
-                  <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                  <div className="col-md-12 col-lg-8 col-xl-7 order-2 order-lg-1">
                     <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                      Log In
+                      Log In to Continue
                     </p>
 
                     <Form
@@ -120,7 +120,7 @@ const Login = () => {
                         </button>
                       </div>
                       <div className="text-center text-lg-start mt-4 pt-2">
-                        <p className="small fw-bold mt-2 pt-1 mb-0">
+                        <p className="fw-bold mt-2 pt-1 mb-0">
                         Not have an account?{" "}
                           <span
                             style={{
@@ -135,7 +135,7 @@ const Login = () => {
                       </div>
                     </Form>
                   </div>
-                  <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                  <div className="col-md-7 col-lg-6 col-xl-5 d-flex align-items-center order-1 order-lg-2">
                     <img
                       src={LoginPageImage}
                       className="img-fluid"

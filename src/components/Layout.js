@@ -159,6 +159,9 @@ const Layout = ({ children }) => {
           </div>
           <div className="content">
             <div className="header">
+
+
+
               {/* ========FOR SIDEBAR TOGGLE IN DIFFERENT DEVICES======== */}
               <div
                 style={{ marginLeft: "10px" }}
@@ -178,6 +181,9 @@ const Layout = ({ children }) => {
                   onKeyDown={() => setOpenMenu(false)}
                 >
                   <List>
+                  <hr/>
+
+                  <span style={{marginLeft: "50px",fontSize: "20px", fontWeight: "bold"}} > Meddy Buddy </span>                  <hr />
                     {SidebarMenu.map((item,i) => (
                       <ListItem key={i}>
                         <Link to={item.path}>
@@ -218,15 +224,17 @@ const Layout = ({ children }) => {
                 </Box>
               </Drawer>
               {/* ================ */}
+
+
+
               <div className="header-content">
                 <div className="header-logo">
                   <img
                     src={Logo1}
                     alt="Meddy Buddy"
                     width="80px"
-                    style={{ marginLeft: "10px", marginTop: "20px" }}
+                    style={{ marginLeft: "10px", marginTop: "20px", marginRight: "40px" }}
                   />
-                <span style={{ marginTop: "30px",fontSize: "20px", fontWeight: "bold", fontStyle: "oblique", }} > Meddy Buddy </span>                  <hr />
                 </div>
                 <Badge
                   count={user && user.notification.length}

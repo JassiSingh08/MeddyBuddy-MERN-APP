@@ -53,8 +53,7 @@ const HomePage = () => {
   
   return (
     <Layout>
-      <h1 className="text-center">HomePage</h1>
-
+      <h1 className="text-center">DashBoard</h1>
       <div
         style={{
           display: "flex",

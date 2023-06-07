@@ -77,6 +77,9 @@ const Navbar = () => {
         <AnchorLink href="#contact" onClick={handleClickScroll3}>
           Contact
         </AnchorLink>
+        <Link className="primary-button" to="/login">
+          LogIn <FiArrowRight />
+        </Link>
         <Link className="primary-button" to="/register">
           Register Now <FiArrowRight />
         </Link>
@@ -92,14 +95,6 @@ const Navbar = () => {
           onKeyDown={() => setOpenMenu(false)}
         >
           <List>
-            {/*             {menuOptions.map((item) => (
-              <ListItem key={item.text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>{item.icon}</ListItemIcon>
-                  <ListItemText primary={item.text}/>
-                </ListItemButton>
-              </ListItem>
-            ))} */}
             {menuOptions.map((item) => (
               <ListItem key={item.text} disablePadding>
                 <Link to={item.path}>

@@ -51,7 +51,7 @@ body {
 .sidebar {
   min-height: 100%;
   width: 300px;
-  border-radius: 5px;
+  border-radius: 20px;
   /* background-color: rgb(11, 121, 38); */
   /* background-color:#1677ff; */
   /* background: linear-gradient(140deg,
@@ -75,6 +75,8 @@ body {
   margin-bottom: 20px;
   box-shadow: 0 0 2px gray;
   background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+
 }
 
 .logo h6 {
@@ -139,6 +141,7 @@ body {
   margin-bottom: 20px;
   box-shadow: 0 0 2px gray;
   background-color: rgb(255, 255, 255);
+  border-radius: 20px;
 }
 
 .header-content {
@@ -436,14 +439,13 @@ body {
 
   .sidebar {
     display: none;
-    width: 100%;
-    margin-right: 0;
+
   }
 
   .content {
     
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   .header-logo{

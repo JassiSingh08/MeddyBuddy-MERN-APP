@@ -50,7 +50,7 @@ const ApplyDoctor = () => {
 
   return (
     <Layout>
-      <h1 className="text-center">Apply Doctor</h1>
+      <h3 className="text-center">Apply for a Doctor's Account</h3>
       <div className="d-flex justify-content-center align-items-center">
         <div
           style={{
