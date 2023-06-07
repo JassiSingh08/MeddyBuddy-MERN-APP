@@ -19,6 +19,7 @@ import UserProfile from "./pages/UserProfile";
 import AdminProfile from "./pages/admin/AdminProfile";
 import LandingPage from "./pages/LandingPage";
 import { useEffect, useState } from "react";
+import ForgotPasswordForm from "./pages/ForgotPasswordForm";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -147,6 +148,14 @@ function App() {
               element={
                 <PublicRoute>
                   <Login />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/forgot-password"
+              element={
+                <PublicRoute>
+                  <ForgotPasswordForm />
                 </PublicRoute>
               }
             />
