@@ -91,6 +91,9 @@ const Register = () => {
                       <p className="text-center h1 fw-bold mb-3 mx-1 mx-md-4 mt-2">
                         Sign up
                       </p>
+                      <div>
+                          <p style={{fontSize:"smaller"}}>*Please Use correct Credentials as it will help you in case you forgot your password! </p>
+                        </div>
 
                       <Form
                         layout="vertical"

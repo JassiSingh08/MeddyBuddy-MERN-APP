@@ -196,7 +196,7 @@ const DoctorAppointment = () => {
       title: "Patient's Name",
       dataIndex: "userInfo",
       responsive: ["sm"],
-      render: (text, record) => <span>{record.userInfo.name}</span>,
+      render: (text, record) => <span>{record.userInfo?.name}</span>,
     },
     {
       title: "Date & Time",

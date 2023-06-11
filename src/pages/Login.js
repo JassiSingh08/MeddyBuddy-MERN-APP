@@ -79,7 +79,7 @@ const Login = () => {
                 <div className="row justify-content-center">
                   <div className="col-md-12 col-lg-8 col-xl-7 order-2 order-lg-1">
                     <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                      Log In to Continue
+                      Log In to Continue..
                     </p>
 
                     <Form
