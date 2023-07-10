@@ -1,4 +1,4 @@
-# Medy Buddy- A doctor Appointment System 
+# Meddy Buddy- A doctor Appointment System 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
